@@ -1,0 +1,22 @@
+created:
+    - database/factories/ProjectFactory.php
+    - database/factories/ExceptionFactory.php
+    - database/factories/LogFactory.php
+    - database/factories/QueryFactory.php
+    - database/factories/StacktraceFactory.php
+    - database/migrations/2022_06_12_211255_create_projects_table.php
+    - database/migrations/2022_06_12_211256_create_exceptions_table.php
+    - database/migrations/2022_06_12_211257_create_logs_table.php
+    - database/migrations/2022_06_12_211258_create_queries_table.php
+    - database/migrations/2022_06_12_211259_create_stacktraces_table.php
+    - app/Models/Project.php
+    - app/Models/Exception.php
+    - app/Models/Log.php
+    - app/Models/Query.php
+    - app/Models/Stacktrace.php
+models:
+    Project: { id: 'uuid primary', name: string, key: string }
+    Exception: { id: 'uuid primary', project_id: 'uuid foreign', tracking_uuid: 'uuid nullable', notifier: 'string nullable', language: 'string nullable', framework_version: 'string nullable', language_version: 'string nullable', exception_class: 'string nullable', seen_at: 'datetime nullable', message: 'string nullable', stage: 'string nullable', message_level: 'string nullable', application_version: 'string nullable', git_hash: 'string nullable', git_message: 'string nullable', git_tag: 'string nullable', git_remote: 'string nullable', git_isDirty: 'boolean nullable', session: 'json nullable', cookies: 'json nullable', route: 'json nullable', env: 'json nullable', request: 'json nullable', request_data_query_string: 'json nullable', request_data_body: 'json nullable', request_data_files: 'json nullable', headers: 'json nullable', user_id: 'string nullable', user: 'json nullable', similarity_hash: string, relationships: { hasMany: 'Log,Query,Stacktrace' } }
+    Log: { id: 'uuid primary', exception_id: 'uuid foreign', message: string, level: string, context: json, microtime: string }
+    Query: { id: 'uuid primary', exception_id: 'uuid foreign', sql: string, time: string, connection_name: string, bindings: 'json nullable', microtime: string }
+    Stacktrace: { id: 'uuid primary', exception_id: 'uuid foreign', ordinal_number: int, file: string, line_number: int, method: string, class: string, code_snippet: json, application_frame: bool }

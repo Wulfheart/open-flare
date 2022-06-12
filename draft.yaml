@@ -26,6 +26,12 @@ models:
     cookies: json nullable
     route: json nullable
     env: json nullable
+    request: json nullable
+    request_data_query_string: json nullable
+    request_data_body: json nullable
+    request_data_files: json nullable
+    headers: json nullable
+    user_id: string nullable
     user: json nullable
     similarity_hash: string
     relationships:
