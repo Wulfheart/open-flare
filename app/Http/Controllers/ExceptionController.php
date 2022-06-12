@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Spatie\FlareClient\Flare;
 use Spatie\Ignition\Config\IgnitionConfig;
 use Spatie\Ignition\Contracts\SolutionProviderRepository;
@@ -16,9 +18,18 @@ class ExceptionController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $data = file_get_contents(__DIR__ . '/data.json');
-        // return response()->json($data);
-        $decoded  = json_decode($data);
+        // $data = file_get_contents(__DIR__ . '/data.json');
+        // // return response()->json($data);
+        // $decoded  = json_decode($data);
+
+        User::all();
+
+        Log::debug("Debug", [
+            "Context" => true,
+            "message" => "EPwdkf",
+            "number" => 1
+        ]);
+
 
         throw new \Exception("Exception");
 

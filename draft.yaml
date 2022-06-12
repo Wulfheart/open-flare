@@ -1,0 +1,5 @@
+models:
+  Project:
+    id: uuid primary
+    name: string
+    key: string
