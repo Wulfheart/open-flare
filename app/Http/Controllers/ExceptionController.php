@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Spatie\FlareClient\Flare;
 use Spatie\Ignition\Config\IgnitionConfig;
@@ -22,7 +23,8 @@ class ExceptionController extends Controller
         // // return response()->json($data);
         // $decoded  = json_decode($data);
 
-        User::all();
+        $user = User::factory()->create();
+        Auth::login($user);
 
         Log::debug("Debug", [
             "Context" => true,
