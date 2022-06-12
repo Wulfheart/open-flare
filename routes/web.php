@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ExceptionController;
+use App\Http\Controllers\ReportController;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    Log::debug("Hello test");
+    throw new Exception("HELP");
     return view('welcome');
 });
+
+Route::get('/data', ExceptionController::class);
