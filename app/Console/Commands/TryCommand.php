@@ -51,6 +51,7 @@ class TryCommand extends Command
         $json = '{"prop": {"x": "test"}}';
 
         $decoded = json_decode($json);
+        throw new \Exception("From console");
 
         return 0;
     }
