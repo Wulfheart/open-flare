@@ -8,23 +8,6 @@ use Spatie\LaravelData\Casts\Cast;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Support\DataProperty;
 
-class A {
-    public string $x;
-}
-
-class B {
-    public string $y;
-    public string $z;
-}
-
-
-
-
-class Containment {
-    public A|B $prop;
-}
-
-
 class TryCommand extends Command
 {
     /**
@@ -48,10 +31,7 @@ class TryCommand extends Command
      */
     public function handle()
     {
-        $json = '{"prop": {"x": "test"}}';
-
-        $decoded = json_decode($json);
-        throw new \Exception("From console");
+        throw new \Exception("Command");
 
         return 0;
     }

@@ -26,6 +26,7 @@ models:
     cookies: json nullable
     route: json nullable
     env: json nullable
+    command_args: json nullable
     request: json nullable
     request_data_query_string: json nullable
     request_data_body: json nullable
