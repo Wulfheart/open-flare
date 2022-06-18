@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Log;
+use App\Models\User;
 use Illuminate\Console\Command;
 use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Casts\Cast;
@@ -31,6 +33,8 @@ class TryCommand extends Command
      */
     public function handle()
     {
+        User::all();
+        \Illuminate\Support\Facades\Log::debug('Test');
         throw new \Exception("Command");
 
         return 0;

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exception;
+use App\Models\Log;
 use App\Models\Project;
+use App\Models\Query;
 use App\Models\Stacktrace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -33,8 +35,8 @@ class ReportController extends Controller
             DB::transaction(function () use ($request, $project) {
 
                 $r = $request;
-                // $req = $request->request->all();
-                // Storage::put('/req.json', json_encode($req));
+                $req = $request->request->all();
+                Storage::put('/req.json', json_encode($req));
 
                 $hash = hash('sha256',
                     $r->input('exception_class').$r->input('message').json_encode($r->input('stacktrace')));
@@ -81,7 +83,29 @@ class ReportController extends Controller
                         'ordinal_number' => $index,
                         'exception_id' => $exception->id,
                     ]);
-                    // throw new \Exception("Test");
+                }
+
+                $queries = $request->input('context.queries', []);
+                foreach ($queries as $query) {
+                    Query::create([
+                        'exception_id' => $exception->id,
+                        'time' => $query['time'],
+                        'microtime' => $query['microtime'],
+                        'bindings' => $query['bindings'],
+                        'connection_name' => $query['connection_name'],
+                        'sql' => $query['sql']
+                    ]);
+                }
+
+                $logs = $request->input('context.logs', []);
+                foreach ($logs as $log) {
+                    Log::create([
+                        'exception_id' => $exception->id,
+                        'message' => $log['message'],
+                        'level' => $log['level'],
+                        'context' => $log['context'],
+                        'microtime' => $log['microtime'],
+                    ]);
                 }
             });
         } catch (\Throwable $t) {
