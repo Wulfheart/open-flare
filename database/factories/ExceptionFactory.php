@@ -45,6 +45,7 @@ class ExceptionFactory extends Factory
             'cookies' => '{}',
             'route' => '{}',
             'env' => '{}',
+            'command_args' => '{}',
             'request' => '{}',
             'request_data_query_string' => '{}',
             'request_data_body' => '{}',
