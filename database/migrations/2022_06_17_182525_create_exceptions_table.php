@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Query\Expression;
 
 class CreateExceptionsTable extends Migration
 {
@@ -18,15 +19,15 @@ class CreateExceptionsTable extends Migration
         Schema::create('exceptions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('project_id')->constrained();
-            $table->uuid('tracking_uuid')->nullable();
-            $table->string('notifier')->nullable();
-            $table->string('language')->nullable();
-            $table->string('framework_version')->nullable();
-            $table->string('language_version')->nullable();
-            $table->string('exception_class')->nullable();
-            $table->dateTime('seen_at')->nullable();
-            $table->string('message')->nullable();
-            $table->string('stage')->nullable();
+            $table->uuid('tracking_uuid');
+            $table->string('notifier');
+            $table->string('language');
+            $table->string('framework_version');
+            $table->string('language_version');
+            $table->string('exception_class');
+            $table->dateTime('seen_at');
+            $table->text('message');
+            $table->string('stage');
             $table->string('message_level')->nullable();
             $table->string('application_version')->nullable();
             $table->string('git_hash')->nullable();
@@ -34,18 +35,18 @@ class CreateExceptionsTable extends Migration
             $table->string('git_tag')->nullable();
             $table->string('git_remote')->nullable();
             $table->boolean('git_isDirty')->nullable();
-            $table->json('session')->nullable();
-            $table->json('cookies')->nullable();
-            $table->json('route')->nullable();
-            $table->json('env')->nullable();
-            $table->json('command_args')->nullable();
-            $table->json('request')->nullable();
-            $table->json('request_data_query_string')->nullable();
-            $table->json('request_data_body')->nullable();
-            $table->json('request_data_files')->nullable();
-            $table->json('headers')->nullable();
+            $table->json('session');
+            $table->json('cookies');
+            $table->json('route');
+            $table->json('env');
+            $table->json('command_args');
+            $table->json('request');
+            $table->json('request_data_query_string');
+            $table->json('request_data_body');
+            $table->json('request_data_files');
+            $table->json('headers');
             $table->string('user_id')->nullable();
-            $table->json('user')->nullable();
+            $table->json('user');
             $table->string('similarity_hash');
             $table->timestamps();
         });

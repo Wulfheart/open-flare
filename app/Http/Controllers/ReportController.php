@@ -35,8 +35,8 @@ class ReportController extends Controller
         $hash = hash('sha256', $r->input('exception_class').$r->input('message') . json_encode($r->input('stacktrace')));
 
         $exception = Exception::create([
-            'id' => Str::uuid()->toString(),
             'tracking_uuid' => $r->input('tracking_uuid'),
+            'project_id' => $project->id,
 
             'git_hash' => $r->input('context.git.hash'),
             'git_message' => $r->input('context.git.message'),
@@ -44,17 +44,17 @@ class ReportController extends Controller
             'git_remote' => $r->input('context.git.remote'),
             'git_isDirty' => $r->input('context.git.isDirty'),
 
-            'env' => $r->input('context.env'),
-            'route' => $r->input('context.route'),
-            'headers' => $r->input('context.headers'),
-            'command_args' => $r->input('context.arguments'),
-            'request' => $r->input('context.request'),
-            'request_data_body' => $r->input('context.request_data.body'),
-            'request_data_files' => $r->input('context.request_data.files'),
-            'request_data_query_string' => $r->input('context.request_data.queryString'),
-            'cookies' => $r->input('context.cookies'),
-            'session' => $r->input('session'),
-            'user' => $r->input('context.user'),
+            'env' => $r->input('context.env', new \stdClass()),
+            'route' => $r->input('context.route', new \stdClass()),
+            'headers' => $r->input('context.headers', new \stdClass()),
+            'command_args' => $r->input('context.arguments', []),
+            'request' => $r->input('context.request', new \stdClass()),
+            'request_data_body' => $r->input('context.request_data.body', new \stdClass()),
+            'request_data_files' => $r->input('context.request_data.files', new \stdClass()),
+            'request_data_query_string' => $r->input('context.request_data.queryString', new \stdClass()),
+            'cookies' => $r->input('context.cookies', new \stdClass()),
+            'session' => $r->input('session', new \stdClass()),
+            'user' => $r->input('context.user', new \stdClass()),
             'user_id' => $r->input('context.user.id'),
             'similarity_hash' => $hash,
             ... $r->all([
