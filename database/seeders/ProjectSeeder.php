@@ -24,7 +24,6 @@ class ProjectSeeder extends Seeder
         ]);
 
         Project::create([
-            'id' => Str::uuid()->toString(),
             'name' => 'TestProjekt',
             'user_id' => $user->id,
             'key' => 'test',

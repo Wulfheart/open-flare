@@ -16,8 +16,8 @@ class CreateExceptionsTable extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('exceptions', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->foreignUuid('project_id')->constrained();
+            $table->id();
+            $table->foreignId('project_id')->constrained();
             $table->uuid('tracking_uuid')->nullable();
             $table->string('notifier')->nullable();
             $table->string('language')->nullable();

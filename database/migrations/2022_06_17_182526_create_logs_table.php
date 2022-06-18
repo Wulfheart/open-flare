@@ -16,8 +16,8 @@ class CreateLogsTable extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('logs', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->foreignUuid('exception_id')->constrained();
+            $table->id();
+            $table->foreignId('exception_id')->constrained();
             $table->string('message');
             $table->string('level');
             $table->json('context');

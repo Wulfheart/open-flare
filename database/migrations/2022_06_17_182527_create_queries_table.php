@@ -16,8 +16,8 @@ class CreateQueriesTable extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('queries', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->foreignUuid('exception_id')->constrained();
+            $table->id();
+            $table->foreignId('exception_id')->constrained();
             $table->string('sql');
             $table->string('time');
             $table->string('connection_name');

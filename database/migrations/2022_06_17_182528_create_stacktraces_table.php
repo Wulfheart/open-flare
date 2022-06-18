@@ -16,8 +16,8 @@ class CreateStacktracesTable extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('stacktraces', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->foreignUuid('exception_id')->constrained();
+            $table->id();
+            $table->foreignId('exception_id')->constrained();
             $table->string('ordinal_number');
             $table->string('file');
             $table->string('line_number');

@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: open-flare
+    ports:
+      - "3407:3306"
+  mailhog:
+    image: mailhog/mailhog
+    logging:
+      driver: 'none'  # disable saving logs
+    ports:
+      - "1027:1025" # smtp server
+      - "8027:8025" # web ui
