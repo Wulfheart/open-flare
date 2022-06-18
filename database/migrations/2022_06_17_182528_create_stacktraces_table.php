@@ -22,7 +22,7 @@ class CreateStacktracesTable extends Migration
             $table->string('file');
             $table->string('line_number');
             $table->string('method');
-            $table->string('class');
+            $table->string('class')->nullable();
             $table->json('code_snippet');
             $table->string('application_frame');
             $table->timestamps();
