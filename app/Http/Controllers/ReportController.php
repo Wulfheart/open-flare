@@ -60,7 +60,7 @@ class ReportController extends Controller
                     'request_data_files' => $r->input('context.request_data.files', new \stdClass()),
                     'request_data_query_string' => $r->input('context.request_data.queryString', new \stdClass()),
                     'cookies' => $r->input('context.cookies', new \stdClass()),
-                    'session' => $r->input('session', new \stdClass()),
+                    'session' => $r->input('context.session', new \stdClass()),
                     'user' => $r->input('context.user', new \stdClass()),
                     'user_id' => $r->input('context.user.id'),
                     'similarity_hash' => $hash,
