@@ -6,6 +6,22 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
+
+    public function bootstrap()
+    {
+        // Don't forget to call parent bootstrap
+        parent::bootstrap();
+
+        if(config('app.debug')){
+            try {
+                // @phpstan-ignore-next-line
+                xdebug_connect_to_client();
+            } catch (\Throwable $t){
+                print_r("Even though debug mode is enabled it seems that you don't have XDebug installed\n\n");
+            }
+        }
+    }
+
     /**
      * The application's global HTTP middleware stack.
      *

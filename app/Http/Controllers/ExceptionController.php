@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DTO\Context\Context;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,21 +20,14 @@ class ExceptionController extends Controller
 {
     public function __invoke(Request $request)
     {
-        // $data = file_get_contents(__DIR__ . '/data.json');
-        // // return response()->json($data);
-        // $decoded  = json_decode($data);
+        $data = file_get_contents(__DIR__ . '/data.json');
 
-        $user = User::factory()->create();
-        Auth::login($user);
+        $decoded = json_decode($data, true);
+        $context = collect($decoded)->get('context');
 
-        Log::debug("Debug", [
-            "Context" => true,
-            "message" => "EPwdkf",
-            "number" => 1
-        ]);
+        $ctx = new Context($context);
 
-
-        throw new \Exception("Exception");
+        $x = $ctx->logs[0]->message;
 
         return response("Ok");
     }

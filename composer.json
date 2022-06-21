@@ -13,6 +13,7 @@
         "laravel/tinker": "^2.7",
         "owenvoke/blade-fontawesome": "^2.0",
         "shrikeh/teapot": "^2.3",
+        "spatie/data-transfer-object": "^3.8",
         "spatie/laravel-data": "^1.5",
         "spatie/laravel-ignition": "^1.0"
     },
