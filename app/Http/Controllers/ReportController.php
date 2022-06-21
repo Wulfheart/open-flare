@@ -36,10 +36,11 @@ class ReportController extends Controller
 
                 $r = $request;
                 $req = $request->request->all();
+                file_put_contents(storage_path('req.json'), json_encode($req));
                 Storage::put('/req.json', json_encode($req));
 
                 $hash = hash('sha256',
-                    $r->input('exception_class').$r->input('message').json_encode($r->input('stacktrace')));
+                    $r->input('exception_class') . $r->input('message') . json_encode($r->input('stacktrace')));
 
                 $exception = Exception::create([
                     'tracking_uuid' => $r->input('tracking_uuid'),
@@ -59,6 +60,8 @@ class ReportController extends Controller
                     'request_data_body' => $r->input('context.request_data.body', new \stdClass()),
                     'request_data_files' => $r->input('context.request_data.files', new \stdClass()),
                     'request_data_query_string' => $r->input('context.request_data.queryString', new \stdClass()),
+                    'job' => $r->input('context.job', new \stdClass()),
+                    'job_data' => $r->input('context.job.data', new \stdClass()),
                     'cookies' => $r->input('context.cookies', new \stdClass()),
                     'session' => $r->input('context.session', new \stdClass()),
                     'user' => $r->input('context.user', new \stdClass()),

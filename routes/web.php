@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ExceptionController;
 use App\Http\Controllers\ReportController;
+use App\Jobs\TestJob;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,3 +30,8 @@ Route::get('/', function (Request $request) {
 });
 
 Route::get('/data', ExceptionController::class);
+
+Route::get('/job', function (){
+    dispatch(new TestJob());
+    // return response();
+});

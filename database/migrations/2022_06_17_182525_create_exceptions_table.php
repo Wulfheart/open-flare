@@ -44,6 +44,8 @@ class CreateExceptionsTable extends Migration
             $table->json('request_data_query_string');
             $table->json('request_data_body');
             $table->json('request_data_files');
+            $table->json('job');
+            $table->json('job_data');
             $table->json('headers');
             $table->string('user_id')->nullable();
             $table->json('user');
