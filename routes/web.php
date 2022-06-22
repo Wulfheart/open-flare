@@ -32,6 +32,10 @@ Route::get('/', function (Request $request) {
 Route::get('/data', ExceptionController::class);
 
 Route::get('/job', function (){
-    dispatch(new TestJob());
+    dispatch(new TestJob(1));
     // return response();
 });
+
+// Route::group(function (){
+//     Route::get('/project')
+// })->middleware('auth:web');
