@@ -14,5 +14,6 @@ class Stacktrace extends Data
         /** @var array{string: string} $code_snippet */
         public array $code_snippet,
         public bool $application_frame,
-    ){}
+    ) {
+    }
 }

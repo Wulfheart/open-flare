@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use App\Models\Exception;
 use App\Models\Query;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class QueryFactory extends Factory
 {

@@ -11,5 +11,6 @@ class Route
         public string $controllerAction,
         /** @var array<int: string> $middleware */
         public array $middleware,
-    ){}
+    ) {
+    }
 }

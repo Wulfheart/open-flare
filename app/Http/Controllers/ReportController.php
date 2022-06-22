@@ -24,7 +24,6 @@ class ReportController extends Controller
 
         try {
             DB::transaction(function () use ($request, $project) {
-
                 $r = $request;
                 $req = $request->request->all();
                 file_put_contents(storage_path('req.json'), json_encode($req));
@@ -40,7 +39,7 @@ class ReportController extends Controller
                     'context' => $r->input('context', new \stdClass()),
                     'user_id' => $r->input('context.user.id'),
                     'similarity_hash' => $hash,
-                    ... $r->all([
+                    ...$r->all([
                         'notifier', 'language', 'framework_version', 'language_version', 'exception_class', 'seen_at',
                         'message',
                         'stage', 'message_level', 'application_version',
@@ -60,11 +59,8 @@ class ReportController extends Controller
                         'exception_id' => $exception->id,
                     ]);
                 }
-
             });
         } catch (\Throwable $t) {
-
         }
-
     }
 }

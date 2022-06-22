@@ -9,6 +9,6 @@ class RequestData
         public array $queryString,
         public array $body,
         public array $files,
-    ){}
-
+    ) {
+    }
 }

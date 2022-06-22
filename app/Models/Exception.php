@@ -19,7 +19,7 @@ class Exception extends Model
      */
     protected $casts = [
         'seen_at' => 'datetime',
-        'context' => 'array'
+        'context' => 'array',
     ];
 
     public function stacktraces(): \Illuminate\Database\Eloquent\Relations\HasMany
@@ -32,27 +32,28 @@ class Exception extends Model
         return $this->belongsTo(Project::class);
     }
 
-    protected function ctx(): Attribute {
+    protected function ctx(): Attribute
+    {
         return Attribute::make(
             get: function (self $value) {
-               return new Context($this->context);
+                return new Context($this->context);
             }
         );
-}
+    }
 
-    protected function type(): Attribute {
+    protected function type(): Attribute
+    {
         return Attribute::make(
-            get: function(self $value) {
-                if(collect($value->ctx->arguments)->contains(fn(string $elem) => $elem === "queue:work")){
+            get: function (self $value) {
+                if (collect($value->ctx->arguments)->contains(fn (string $elem) => $elem === 'queue:work')) {
                     return ExceptionTypeEnum::QUEUE;
                 }
 
-                if(count($value->ctx->arguments) > 0){
+                if (count($value->ctx->arguments) > 0) {
                     return ExceptionTypeEnum::CLI;
                 }
 
                 return ExceptionTypeEnum::WEB;
-
             }
         );
     }

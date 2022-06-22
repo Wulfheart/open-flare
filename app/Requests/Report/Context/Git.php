@@ -12,7 +12,6 @@ class Git extends Data
         public string $tag,
         public string $remote,
         public bool $isDirty,
-    )
-    {
+    ) {
     }
 }

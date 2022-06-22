@@ -21,5 +21,6 @@ class Context extends Data
         /** @var array<string: string> */
         public array $env,
         // public array
-    ){}
+    ) {
+    }
 }

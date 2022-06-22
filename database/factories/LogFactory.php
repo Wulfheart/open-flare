@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use App\Models\Exception;
 use App\Models\Log;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LogFactory extends Factory
 {

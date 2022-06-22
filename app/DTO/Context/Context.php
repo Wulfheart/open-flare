@@ -10,32 +10,42 @@ use Spatie\DataTransferObject\DataTransferObject;
 class Context extends DataTransferObject
 {
     #[CastWith(ArrayDataCaster::class)]
-	public ?ArrayData $arguments;
+    public ?ArrayData $arguments;
+
     #[CastWith(ArrayDataCaster::class)]
-	public ?ArrayData $env;
+    public ?ArrayData $env;
+
     #[CastWith(ArrayDataCaster::class)]
-	public ?ArrayData $request;
+    public ?ArrayData $request;
+
     #[CastWith(ArrayDataCaster::class)]
-	public ?ArrayData $request_data;
+    public ?ArrayData $request_data;
+
     #[CastWith(ArrayDataCaster::class)]
-	public ?ArrayData $headers;
+    public ?ArrayData $headers;
+
     #[CastWith(ArrayDataCaster::class)]
-	public ?ArrayData $cookies;
+    public ?ArrayData $cookies;
+
     #[CastWith(ArrayDataCaster::class)]
-	public ?ArrayData $session;
+    public ?ArrayData $session;
+
     #[CastWith(ArrayDataCaster::class)]
-	public ?ArrayData $route;
-	public Git $git;
+    public ?ArrayData $route;
+
+    public Git $git;
+
     #[CastWith(ArrayDataCaster::class)]
     public ?ArrayData $user;
+
     #[CastWith(ArrayDataCaster::class)]
     public ?ArrayData $job;
 
-	/** @var \App\DTO\Context\Logs[] $logs */
+    /** @var \App\DTO\Context\Logs[] $logs */
     #[CastWith(ArrayCaster::class, itemType: Logs::class)]
-	public array $logs = [];
+    public array $logs = [];
 
-	/** @var \App\DTO\Context\Queries[] $queries */
+    /** @var \App\DTO\Context\Queries[] $queries */
     #[CastWith(ArrayCaster::class, itemType: Queries::class)]
-	public array $queries = [];
+    public array $queries = [];
 }

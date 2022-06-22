@@ -11,6 +11,6 @@ class Request extends Data
         public ?string $ip,
         public string $method,
         public string $useragent,
-    ){
+    ) {
     }
 }

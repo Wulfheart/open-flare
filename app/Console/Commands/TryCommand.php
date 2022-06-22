@@ -2,13 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Log;
 use App\Models\User;
 use Illuminate\Console\Command;
-use Spatie\LaravelData\Attributes\WithCast;
-use Spatie\LaravelData\Casts\Cast;
-use Spatie\LaravelData\Data;
-use Spatie\LaravelData\Support\DataProperty;
 
 class TryCommand extends Command
 {
@@ -35,7 +30,7 @@ class TryCommand extends Command
     {
         User::all();
         \Illuminate\Support\Facades\Log::debug('Test');
-        throw new \Exception("Command");
+        throw new \Exception('Command');
 
         return 0;
     }
