@@ -35,6 +35,10 @@ Route::get('/job', function () {
     // return response();
 });
 
+Route::get('/display', function(){
+   return view('welcome');
+});
+
 // Route::group(function (){
 //     Route::get('/project')
 // })->middleware('auth:web');
