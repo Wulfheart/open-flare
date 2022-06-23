@@ -41,6 +41,12 @@ class Context extends DataTransferObject
     #[CastWith(ArrayDataCaster::class)]
     public ?ArrayData $job;
 
+    #[CastWith(ArrayDataCaster::class)]
+    public ?ArrayData $livewire;
+
+    #[CastWith(ArrayDataCaster::class)]
+    public ?ArrayData $view;
+
     /** @var \App\DTO\Context\Logs[] $logs */
     #[CastWith(ArrayCaster::class, itemType: Logs::class)]
     public array $logs = [];
