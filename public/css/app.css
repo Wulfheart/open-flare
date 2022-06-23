@@ -355,13 +355,6 @@ input::-moz-placeholder, textarea::-moz-placeholder {
   /* 2 */
 }
 
-input:-ms-input-placeholder, textarea:-ms-input-placeholder {
-  opacity: 1;
-  /* 1 */
-  color: #9ca3af;
-  /* 2 */
-}
-
 input::placeholder,
 textarea::placeholder {
   opacity: 1;
@@ -589,10 +582,6 @@ video {
   display: grid;
 }
 
-.h-1 {
-  height: 0.25rem;
-}
-
 .h-4 {
   height: 1rem;
 }
@@ -677,11 +666,6 @@ video {
   border-radius: 0.125rem;
 }
 
-.bg-gray-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-}
-
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -689,6 +673,11 @@ video {
 
 .bg-gray-500\/5 {
   background-color: rgb(107 114 128 / 0.05);
+}
+
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
 .px-6 {
