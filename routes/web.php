@@ -36,7 +36,10 @@ Route::get('/job', function () {
 });
 
 Route::get('/display', function () {
-    return view('welcome');
+
+    return view('welcome', [
+        'exception' => \App\Models\Exception::with('stacktraces')->first(),
+    ]);
 });
 
 // Route::group(function (){
